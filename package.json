@@ -1,8 +1,8 @@
 {
-  "name": "vite-typescript-npm-package",
-  "version": "1.0.0",
-  "description": "Vite TypeScript library npm package template",
-  "license": "ISC",
+  "name": "ts-llm",
+  "version": "0.0.1",
+  "description": "Tools for using LLMs with NodeJS",
+  "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
@@ -19,12 +19,10 @@
     "format:styles": "stylelint ./**/*.{css,scss} --fix"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "openai": "^3.1.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
+    "@types/node": "^18.11.19",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
     "@vitejs/plugin-react": "^3.0.0",

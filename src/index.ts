@@ -1,4 +1,7 @@
-// Main library exports - these are packaged in your distributable
-export const isOdd = (n: number): boolean => {
-  return !!(n & 1);
-};
+import LLM from "llms"
+import Prompt from "prompts"
+
+export default {
+  LLM,
+  Prompt,
+}
