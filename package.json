@@ -1,7 +1,7 @@
 {
-  "name": "ts-llm",
+  "name": "langchainjs",
   "version": "0.0.1",
-  "description": "Tools for using LLMs with NodeJS",
+  "description": "A TypeScript implementation of Langchain for NodeJS",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
