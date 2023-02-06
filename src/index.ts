@@ -1,5 +1,5 @@
-import LLM from "llms"
-import Prompt from "prompts"
+import * as LLM from "llms"
+import * as Prompt from "prompts"
 
 export default {
   LLM,

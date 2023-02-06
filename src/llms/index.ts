@@ -1,3 +1,4 @@
-import { OpenAILLM } from "./OpenAI"
+import { LLM } from "./BaseLLM"
+import { OpenAI } from "./OpenAI"
 
-export default { OpenAILLM }
+export { LLM, OpenAI }

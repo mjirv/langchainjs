@@ -3,16 +3,13 @@
   "version": "0.0.1",
   "description": "Tools for using LLMs with NodeJS",
   "license": "MIT",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "vite --host --open",
-    "build": "tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
-    "watch": "tsc && vite build --watch",
+    "build": "tsc",
     "lint:scripts": "eslint . --ext .ts",
     "lint:styles": "stylelint ./**/*.{css,scss}",
     "format:scripts": "prettier . --write",
@@ -27,8 +24,6 @@
     "@types/node": "^18.11.19",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
-    "@vitejs/plugin-react": "^3.0.0",
-    "dts-bundle-generator": "^7.1.0",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -40,7 +35,6 @@
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.0"
+    "typescript": "^4.9.4"
   }
 }

@@ -1,4 +1,4 @@
-import { OpenAILLM } from "../../../llms/OpenAI"
+import { OpenAI } from "../../../llms/OpenAI"
 import { Configuration, OpenAIApi } from "openai"
 
 const createCompletion = jest.fn().mockImplementation(() => ({
@@ -24,35 +24,35 @@ jest.mock("openai", () => {
   }
 })
 
-describe("OpenAILLM", () => {
-  let openAILLM: OpenAILLM
+describe("OpenAI", () => {
+  let openAI: OpenAI
 
   beforeEach(() => {
-    openAILLM = new OpenAILLM("api-key", {
+    openAI = new OpenAI("api-key", {
       model: "model-name",
     })
   })
 
-  it("creates an instance of OpenAILLM", () => {
-    expect(openAILLM).toBeInstanceOf(OpenAILLM)
+  it("creates an instance of OpenAI", () => {
+    expect(openAI).toBeInstanceOf(OpenAI)
     expect(Configuration).toHaveBeenCalledWith({ apiKey: "api-key" })
     expect(OpenAIApi).toHaveBeenCalledWith({})
   })
 
   it("throws an error if no OpenAI API key is provided", () => {
     expect(() => {
-      new OpenAILLM("", { model: "model-name" })
+      new OpenAI("", { model: "model-name" })
     }).toThrowError("No OpenAI API key provided")
   })
 
   it("throws an error if no model name is provided", () => {
     expect(() => {
-      new OpenAILLM("api-key", { model: "" })
+      new OpenAI("api-key", { model: "" })
     }).toThrowError("No model name provided")
   })
 
   it("calls OpenAI API for completion", async () => {
-    const result = await openAILLM.getCompletion("prompt")
+    const result = await openAI.generate(["prompt"])
     expect(createCompletion).toHaveBeenCalledWith({
       model: "model-name",
       prompt: "prompt",
@@ -61,10 +61,7 @@ describe("OpenAILLM", () => {
   })
 
   it("passes suffix and stop options to OpenAI API for completion", async () => {
-    const result = await openAILLM.getCompletion("prompt", {
-      suffix: "suffix",
-      stop: "stop",
-    })
+    const result = await openAI.generate(["prompt"], ["stop"])
     expect(createCompletion).toHaveBeenCalledWith({
       model: "model-name",
       prompt: "prompt",
@@ -80,7 +77,7 @@ describe("OpenAILLM", () => {
       //@ts-ignore
       data: {},
     })
-    await expect(openAILLM.getCompletion("prompt")).rejects.toThrowError(
+    await expect(openAI.generate(["prompt"])).rejects.toThrowError(
       "Invalid request; no choices received from OpenAI"
     )
   })
@@ -97,7 +94,7 @@ describe("OpenAILLM", () => {
         ],
       },
     })
-    await expect(openAILLM.getCompletion("prompt")).rejects.toThrowError(
+    await expect(openAI.generate(["prompt"])).rejects.toThrowError(
       "Invalid request; no completion received from OpenAI"
     )
   })

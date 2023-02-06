@@ -1,3 +1,4 @@
-import ObjectFromTypePrompt from "./typescript/ObjectFromType"
+import { BasePromptTemplate } from "./Base"
+import { PromptTemplate } from "./Prompt"
 
-export default { ObjectFromTypePrompt }
+export { BasePromptTemplate, PromptTemplate }
