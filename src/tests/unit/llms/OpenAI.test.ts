@@ -56,19 +56,19 @@ describe("OpenAI", () => {
     expect(createCompletion).toHaveBeenCalledWith({
       model: "model-name",
       prompt: "prompt",
+      stop: undefined,
     })
-    expect(result).toBe("completion text")
+    expect(result).toEqual({ generations: [[{ text: "completion text" }]] })
   })
 
-  it("passes suffix and stop options to OpenAI API for completion", async () => {
+  it("passes stop options to OpenAI API for completion", async () => {
     const result = await openAI.generate(["prompt"], ["stop"])
     expect(createCompletion).toHaveBeenCalledWith({
       model: "model-name",
       prompt: "prompt",
-      suffix: "suffix",
-      stop: "stop",
+      stop: ["stop"],
     })
-    expect(result).toBe("completion text")
+    expect(result).toEqual({ generations: [[{ text: "completion text" }]] })
   })
 
   it("throws an error if no choices are received from OpenAI API", async () => {
